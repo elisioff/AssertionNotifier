@@ -1,0 +1,6 @@
+framework module Pods_AssertionNotifier_Tests {
+  umbrella header "Pods-AssertionNotifier_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "AssertionNotifier",
+  "version": "0.1.0",
+  "summary": "A short description of AssertionNotifier.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Elísio Fernandes/AssertionNotifier",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Elísio Fernandes": "elisio.fernandes@farfetch.com"
+  },
+  "source": {
+    "git": "https://github.com/Elísio Fernandes/AssertionNotifier.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "AssertionNotifier/Classes/**/*"
+}
