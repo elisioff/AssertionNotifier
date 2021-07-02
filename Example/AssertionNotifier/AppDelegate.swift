@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import AssertionNotifier
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        NotificationsHandler.shared.requestNotificationsAuthorization(with: application)
+        AssertionNotifier.shared.configure(with: AssertionNotifier.Config(notificationCenter: NotificationsHandler.shared))
+        
         return true
     }
 

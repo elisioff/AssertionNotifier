@@ -22,7 +22,7 @@ pod 'AssertionNotifier'
 
 ## Author
 
-Elísio Fernandes, elisio.fernandes@farfetch.com
+Elísio Fernandes
 
 ## License
 
