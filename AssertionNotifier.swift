@@ -14,11 +14,11 @@ public struct AssertionNotifier {
 
     public struct Config {
 
-        let notificationCenter: AssertionMessenger
+        weak var notificationsMessenger: AssertionMessenger?
 
-        public init(notificationCenter: AssertionMessenger) {
+        public init(notification: AssertionMessenger) {
 
-            self.notificationCenter = notificationCenter
+            self.notificationsMessenger = notification
         }
     }
 
@@ -40,12 +40,13 @@ public struct AssertionNotifier {
     ) {
 
         #if DEBUG
-        if condition() == false {
+        if condition() == false,
+           let notificationsMessenger = AssertionNotifier.shared.config?.notificationsMessenger {
 
-            AssertionNotifier.shared.config?.notificationCenter.sendAssertNotification(message: message,
-                                                                                       delay: delay,
-                                                                                       file: file,
-                                                                                       line: line)
+            notificationsMessenger.sendAssertNotification(message: message,
+                                                          delay: delay,
+                                                          file: file,
+                                                          line: line)
 
             os_log(.error, "%@", message)
             assertionFailure(message, file: file, line: line)
