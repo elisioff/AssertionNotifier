@@ -14,11 +14,11 @@ public struct AssertionNotifier {
 
     public struct Config {
 
-        weak var notificationsMessenger: AssertionMessenger?
+        weak var notificationsHandler: AssertionMessenger?
 
-        public init(notification: AssertionMessenger) {
+        public init(notificationsHandler: AssertionMessenger) {
 
-            self.notificationsMessenger = notification
+            self.notificationsHandler = notificationsHandler
         }
     }
 
@@ -31,7 +31,7 @@ public struct AssertionNotifier {
         self.config = config
     }
 
-    static func assert(
+    func assert(
         _ condition: @autoclosure () -> Bool,
         message: String = .init(),
         delay: TimeInterval = 3,
@@ -41,9 +41,9 @@ public struct AssertionNotifier {
 
         #if DEBUG
         if condition() == false,
-           let notificationsMessenger = AssertionNotifier.shared.config?.notificationsMessenger {
+           let notificationsHandler = self.config?.notificationsHandler {
 
-            notificationsMessenger.sendAssertNotification(message: message,
+            notificationsHandler.sendAssertNotification(message: message,
                                                           delay: delay,
                                                           file: file,
                                                           line: line)

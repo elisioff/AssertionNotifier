@@ -1,22 +1,20 @@
 {
   "name": "AssertionNotifier",
   "version": "0.1.0",
-  "summary": "A short description of AssertionNotifier.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Sends a notification with extra info after an assertion fails.",
+  "description": "Get a notification with extra info about  crash like the file and line after as assertion fails to help you debugging",
   "homepage": "https://github.com/Elísio Fernandes/AssertionNotifier",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
-  "authors": {
-    "Elísio Fernandes": "elisio.fernandes@farfetch.com"
-  },
+  "authors": "Elísio Fernandes",
   "source": {
     "git": "https://github.com/Elísio Fernandes/AssertionNotifier.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "12.1"
   },
   "source_files": "AssertionNotifier/Classes/**/*"
 }
