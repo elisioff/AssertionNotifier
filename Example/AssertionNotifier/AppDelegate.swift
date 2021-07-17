@@ -2,8 +2,9 @@
 //  AppDelegate.swift
 //  AssertionNotifier
 //
-//  Created by Elísio Fernandes on 06/23/2021.
-//  Copyright (c) 2021 Elísio Fernandes. All rights reserved.
+//  Created by Elisio Freitas Fernandes on 10/05/2021.
+//  Copyright (c) 2021 Elísio Fernandes
+//  MIT license, see LICENSE file for details
 //
 
 import UIKit
@@ -17,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         NotificationsHandler.shared.requestNotificationsAuthorization(with: application)
-        AssertionNotifier.shared.configure(with: AssertionNotifier.Config(notificationCenter: NotificationsHandler.shared))
+        AssertionNotifier.shared.configure(with: AssertionNotifier.Config(notificationsHandler: NotificationsHandler.shared))
         
         return true
     }

@@ -1,15 +1,10 @@
 //
 //  NotificationsHandler.swift
-//  Demo Floor (iOS)
+//  AssertionNotifier
 //
 //  Created by Elisio Freitas Fernandes on 10/05/2021.
-//
-
-//
-//  NotificationHandler.swift
-//  PandaMinute (iOS)
-//
-//  Created by Elisio Freitas Fernandes on 15/09/2020.
+//  Copyright (c) 2021 Elísio Fernandes
+//  MIT license, see LICENSE file for details
 //
 
 import os.log
