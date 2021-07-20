@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/elisioff'
 
   s.ios.deployment_target = '12.1'
+  s.osx.deployment_target  = '10.10'
 
   s.source_files = 'AssertionNotifier/Classes/**/*'
   

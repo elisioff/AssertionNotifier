@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  AssertionNotifier
 //
-//  Created by Elisio Freitas Fernandes on 10/05/2021.
+//  Created by Elísio Freitas Fernandes on 10/05/2021.
 //  Copyright (c) 2021 Elísio Fernandes
 //  MIT license, see LICENSE file for details
 //
