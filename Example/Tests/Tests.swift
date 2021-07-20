@@ -1,5 +1,5 @@
 import XCTest
-import AssertionNotifier
+@testable import AssertionNotifier
 
 class NotificationsHandlerMock: AssertionMessenger {
 
@@ -41,6 +41,7 @@ class Tests: XCTestCase {
 
             XCTFail()
         }
+        XCTAssertFalse(self.notificationsHandlerMock?.didReceiveNotification ?? true)
     }
 
     func testAssertionNotifierDidSendNotification() {
