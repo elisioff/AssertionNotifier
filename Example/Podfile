@@ -1,6 +1,6 @@
 use_frameworks!
 
-platform :ios, '12.1'
+platform :ios, '13'
 
 target 'AssertionNotifier_Example' do
   pod 'AssertionNotifier', :path => '../'

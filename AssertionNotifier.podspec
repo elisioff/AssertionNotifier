@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/Elísio Fernandes/AssertionNotifier.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/elisioff'
 
-  s.ios.deployment_target = '12.1'
-  s.osx.deployment_target  = '10.10'
+  s.ios.deployment_target = '13'
+  s.osx.deployment_target  = '10.14'
 
   s.source_files = 'AssertionNotifier/Classes/**/*'
   

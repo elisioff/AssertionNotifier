@@ -12,8 +12,10 @@ import os.log
 
 public struct AssertionNotifier {
 
+    /// Configuration structure to provided AssertionNotifier with the required elements to work properly.
     public struct Config {
 
+        /// Object that will handle the notifications AssertionNotifier creates, without which no notification can be delivered.
         weak var notificationsHandler: AssertionMessenger?
 
         public init(notificationsHandler: AssertionMessenger) {
@@ -22,10 +24,14 @@ public struct AssertionNotifier {
         }
     }
 
+    /// Shared instance of AssertionNotifier. Do not forget to call `configure(with:)` in order to provide
+    /// this instance with the required elements for it to be able to notify the need to send a notification.
     public static var shared = AssertionNotifier()
 
     private var config: AssertionNotifier.Config?
 
+    /// Configures the instance so that it has an AssertionMessenger to which it can hand over notifications.
+    /// - Parameter config: AssertionNotifier.Config with the desired elements
     public mutating func configure(with config: Self.Config) {
 
         self.config = config
@@ -94,6 +100,36 @@ extension AssertionNotifier {
     }
 }
 
+/// A notification handler. This object is **required** in order to have the ability to **send notifications** to the notification center.
+/// You may already have your own handler, just conform to this and make it send a notification with the format that best
+/// suits your needs.
+///
+/// In your notification handler you can add something like the following example in order to have it working with little effort.
+/// ```swift
+/// func sendAssertNotification(message: String,
+///                             delay: TimeInterval,
+///                             file: StaticString = #file,
+///                             line: UInt = #line) {
+///
+///     let notificationContent = UNMutableNotificationContent()
+///     notificationContent.title = Constants.title
+///     notificationContent.subtitle = message
+///     notificationContent.body = """
+///                           \(message)
+///                           In file: \(file.description)
+///                           At line: \(line.description)
+///                           """
+///
+///     let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: delay,
+///                                                                 repeats: false)
+///
+///     let notificationRequest = UNNotificationRequest(identifier: "assertionFailureHit",
+///                                                     content: notificationContent,
+///                                                     trigger: notificationTrigger)
+///
+///     UNUserNotificationCenter.current().add(notificationRequest)
+/// }
+/// ```
 public protocol AssertionMessenger: AnyObject {
     
     func sendAssertNotification(message: String,
