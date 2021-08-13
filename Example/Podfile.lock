@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AssertionNotifier: 0f9b1a86af46af75b35fcb90f8fed52d58088fee
+  AssertionNotifier: 1759d4483599385f864c2fad1b2de022d6870e7e
 
 PODFILE CHECKSUM: 437a00c1a8be90ff6b590afffb0432210e8304e6
 
