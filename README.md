@@ -1,6 +1,6 @@
 # AssertionNotifier
 
-[![CI Status](https://img.shields.io/travis/elisioff/AssertionNotifier.svg?style=flat)](https://travis-ci.org/elisioff/AssertionNotifier)
+[![CI Status](https://img.shields.io/travis/elisioff/AssertionNotifier.svg?style=flat)](https://travis-ci.com/github/elisioff/AssertionNotifier)
 [![Version](https://img.shields.io/cocoapods/v/AssertionNotifier.svg?style=flat)](https://cocoapods.org/pods/AssertionNotifier)
 [![License](https://img.shields.io/cocoapods/l/AssertionNotifier.svg?style=flat)](https://cocoapods.org/pods/AssertionNotifier)
 [![Platform](https://img.shields.io/cocoapods/p/AssertionNotifier.svg?style=flat)](https://cocoapods.org/pods/AssertionNotifier)
