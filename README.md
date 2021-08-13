@@ -27,6 +27,66 @@ it, simply add the following line to your Podfile:
 pod 'AssertionNotifier'
 ```
 
+## Usage
+Make sure you have an entity responsible for handling notifications, for demonstration purposes let's call it `NotificationsHandler`
+
+Have your `NotificationsHandler` conform to the protocol `AssertionMessenger`, as this will provide you with relevant information regarding the origin of your crash when `sendAssertNotification(message:delay:file:line:)` is called.
+
+```swift
+protocol AssertionMessenger: AnyObject {
+
+    func sendAssertNotification(message: String,
+                                delay: TimeInterval,
+                                file: StaticString,
+                                line: UInt)
+}
+````
+Take the information you want and create your notification. 
+
+```swift
+extension NotificationsHandler: AssertionMessenger {
+
+    func sendAssertNotification(message: String,
+                                delay: TimeInterval,
+                                file: StaticString = #file,
+                                line: UInt = #line) {
+
+        // 1
+        let notificationContent = UNMutableNotificationContent()
+        // 2
+        notificationContent.title = "Assertion Failure".uppercased()
+        notificationContent.subtitle = message
+        notificationContent.body = """
+                    \(message)
+                    In file: \(file)
+                    At line: \(line)
+                    """
+        // 3
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: delay,
+                                                                    repeats: false)
+        // 4
+        let notificationRequest = UNNotificationRequest(identifier: "assertionFailureHit",
+                                                        content: notificationContent,
+                                                        trigger: notificationTrigger)
+        // 5
+        UNUserNotificationCenter.current().add(notificationRequest)
+    }
+}
+```
+Numbers above explained:
+1. Create a `UNMutableNotificationContent` object
+2. Define a title, subtitle and a body
+3. Create a `UNTimeIntervalNotificationTrigger` and set it with the preferred delay you just received
+4. Create a `UNNotificationRequest`
+5. Add it to the Notification center.
+
+Then all you need it to call `AssertionNotifier` instead of a regular `assert`.
+
+```swift
+AssertionNotifier.assert(false, delay: notificationDelay)
+```
+Now whenever you hit an assert you will then receive a notification a few seconds later with information that hopefully will sabe much time.
+
 ---
 **Author** _Elísio Fernandes_
 
