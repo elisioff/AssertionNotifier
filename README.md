@@ -40,6 +40,12 @@ protocol AssertionMessenger: AnyObject {
                                 file: StaticString,
                                 line: UInt)
 }
+```
+Be sure to configure `AssertionNotifier` with a reference to your `NotificationsHandler` instance otherwise it won't be able to communicate outside it's scope.
+
+```swift
+let assertionNotifierConfig = AssertionNotifier.Config(notificationsHandler: NotificationsHandler.shared)
+AssertionNotifier.shared.configure(with: assertionNotifierConfig)
 ````
 Take the information you want and create your notification. 
 
@@ -83,7 +89,7 @@ Numbers above explained:
 Then all you need it to call `AssertionNotifier` instead of a regular `assert`.
 
 ```swift
-AssertionNotifier.assert(false, delay: notificationDelay)
+AssertionNotifier.assert(/*condition*/)
 ```
 Now whenever you hit an assert you will then receive a notification a few seconds later with information that hopefully will sabe much time.
 
