@@ -9,9 +9,9 @@
 Before a release we may have _debug_, _in-house_, _release-candidate_, etc, builds of our apps. In these builds we often leverage `assertionFailure(:)` which is great as it allows us to timely find and fix issues, the problem is when the assertion is hit and we have no idea what caused the crash because we **are not connected to Xcode**, hence AssertionNotifier.
 
 ## What it is
-**AssertionNotifier** is a light weight `struct` that evaluates condition and reacts to the result. 
+**AssertionNotifier** is a lightweight `struct` that evaluates conditions and reacts to the result. 
 
-It wraps the condition for failure, evaluates it and in case of failure before terminating the app it schedules a notification to be sent with the information of the **file** and **line** where the issue originated.
+It wraps the condition for failure, evaluates it and in case of failure, before terminating the app, schedules a notification to be sent with the information of the **file** and **line** where the issue originated.
 
 It allows you to readily have an idea of the reason for the crash instead of having to look through you favorite crash reporting tool.
 
@@ -91,8 +91,13 @@ Then all you need it to call `AssertionNotifier` instead of a regular `assert`.
 ```swift
 AssertionNotifier.assert(/*condition*/)
 ```
-Now whenever you hit an assert you will then receive a notification a few seconds later with information that hopefully will sabe much time.
+Now whenever you hit an assert you will then receive a notification a few seconds later with information that hopefully will save you much time.
 
+### Result Example
+
+|Notification Banner|Notification Detail|
+|-|-|
+|![image](.images/notification_banner.jpg)|![image](.images/notification_detail.jpg)|
 ---
 **Author** _Elísio Fernandes_
 
