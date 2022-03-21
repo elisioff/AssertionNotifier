@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'AssertionNotifier'
-  s.version          = '0.1.0'
-  s.summary          = 'Sends a notification with extra info after an assertion fails.'
+  s.version          = '0.2.0'
+  s.summary          = 'Sends a request to your notifications handler with extra info after an assertion fails.'
 
   s.description      = 'Get a notification with extra info about  crash like the file and line after as assertion fails to help you debugging'
 

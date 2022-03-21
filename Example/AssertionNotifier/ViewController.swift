@@ -8,12 +8,22 @@
 //
 
 import UIKit
+import AssertionNotifier
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let button = UIButton()
+        button.setTitle("Assert", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+
+        self.view.addSubview(button)
+
+        button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,5 +31,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @objc
+    func didTapButton(sender: UIButton) {
+
+        AssertionNotifier.shared.assert(false,
+                                        file: #file,
+                                        line: #line)
+    }
 }
 

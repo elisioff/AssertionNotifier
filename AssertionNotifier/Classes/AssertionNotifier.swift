@@ -10,7 +10,7 @@
 import Foundation
 import os.log
 
-public struct AssertionNotifier {
+public class AssertionNotifier {
 
     /// Configuration structure to provided AssertionNotifier with the required elements to work properly.
     public struct Config {
@@ -32,7 +32,7 @@ public struct AssertionNotifier {
 
     /// Configures the instance so that it has an AssertionMessenger to which it can hand over notifications.
     /// - Parameter config: AssertionNotifier.Config with the desired elements
-    public mutating func configure(with config: Self.Config) {
+    public func configure(with config: AssertionNotifier.Config) {
 
         self.config = config
     }
@@ -55,7 +55,9 @@ public struct AssertionNotifier {
         AssertionNotifier.shared.assert(condition(),
                                         message: message,
                                         delay: delay,
-                                        closure: nil)
+                                        closure: nil,
+                                        file: file,
+                                        line: line)
     }
 }
 

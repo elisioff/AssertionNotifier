@@ -17,9 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
         NotificationsHandler.shared.requestNotificationsAuthorization(with: application)
         AssertionNotifier.shared.configure(with: AssertionNotifier.Config(notificationsHandler: NotificationsHandler.shared))
-        
+
+        let viewController = ViewController()
+
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
         return true
     }
 
